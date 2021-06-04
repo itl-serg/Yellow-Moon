@@ -35,21 +35,28 @@ textarea {
     align-items: center;
     justify-content: center;
     h1 {
-      color: #fff;
+      color: $colorWhite;
       text-transform: uppercase;
       margin-bottom: 53px;
       letter-spacing: -0.2px;
+      padding: 0 60px;
+      text-align: center;
+      @include media(">=992px") {
+        padding: 0px;
+      }
     }
 
     strong {
-      @include textFont(300, 40px, 42px, $colorTurbo);
+      @include textFont(300, 30px, 30px, $colorTurbo);
       text-transform: uppercase;
-      margin-bottom: 119px;
+      margin-bottom: 60px;
       letter-spacing: 2px;
       text-align: center;
-      padding: 0 40px;
+      padding: 0 65px;
       @include media(">=992px") {
         padding: 0 20px;
+        @include textFont(300, 40px, 42px, $colorTurbo);
+        margin-bottom: 119px;
       }
     }
     a {
@@ -66,73 +73,182 @@ textarea {
       padding: 0 10px;
       letter-spacing: -0.5px;
     }
+    a:after {
+      background: url(../images/sprite/sprite.svg#arrow) no-repeat;
+      content: "";
+      background-size: cover;
+      position: absolute;
+      top: 100px;
+      left: calc(50% - 21px);
+      width: 42px;
+      height: 22px;
+      @include media(">=992px") {
+        top: 140px;
+      }
+    }
     a:hover {
       background: $backgroundTurbo;
       color: $colorWoodsmoke;
     }
   }
 }
+
+// Header menu
 .header-menu {
-  max-width: 1170px;
-  height: 120px;
-  margin: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1170px;
+  margin: auto;
+  height: 120px;
   .header-menu-logo {
-    position: relative;
-    .logo::before {
+    span {
+      display: block;
+      position: relative;
+    }
+
+    span::before {
       background: url("../images/logo.png") no-repeat;
       background-size: cover;
       content: "";
+      width: 47px;
+      height: 47px;
       position: absolute;
-      top: 0px;
-      left: 0;
-      width: 51px;
-      height: 51px;
+      top: calc(50% - 24px);
+      left: 80px;
+      @include media(">=992px") {
+        left: 0;
+      }
     }
-    .logo::after {
+    span::after {
       background: url("../images/logo-txt.png") no-repeat;
       background-size: cover;
       content: "";
-      position: absolute;
-      top: 25px;
-      left: 70px;
       width: 132px;
       height: 18px;
-    }
-  }
-  .header-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .header-nav-list {
-      display: flex;
-      align-items: center;
-      li {
-        margin: 12px 23px;
-        letter-spacing: 0.1px;
-        position: relative;
-        a {
-          text-decoration: none;
-          color: $colorGray;
-        }
-        a:before {
-          content: "";
-          position: absolute;
-          height: 40px;
-          width: calc(100% + 40px);
-          top: -11px;
-          left: -20px;
-          border: 1px solid #ffe600;
-          display: none;
-        }
-      }
-      li:hover > a::before {
-        display: inline-block;
+      position: absolute;
+      top: calc(50% - 9px);
+      left: 150px;
+      @include media(">=992px") {
+        left: 70px;
       }
     }
   }
 }
+.header-nav {
+  .burger {
+    width: 50px;
+    height: 46px;
+    background: $backgroundTurbo;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 10;
+    top: 30px;
+    right: 10px;
+    span {
+      // display: block;
+      position: absolute;
+      left: 5px;
+      height: 4px;
+      width: 40px;
+      background: $colorWhite;
+      transition: all 0.8s ease-in-out;
+      &:first-child {
+        top: 6px;
+      }
+      &:nth-child(2) {
+        top: 16px;
+      }
+      &:nth-child(3) {
+        top: 26px;
+      }
+      &:last-child {
+        top: 36px;
+      }
+    }
+    @include media(">=992px") {
+      display: none;
+    }
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"]:checked ~ .header-nav-list {
+    transform: none;
+  }
+  input[type="checkbox"]:checked + .burger {
+    span:first-child {
+      transform: rotate(135deg);
+      top: 21px;
+    }
+    span:nth-child(2) {
+      display: none;
+    }
+    span:nth-child(3) {
+      display: none;
+    }
+    span:last-child {
+      transform: rotate(-135deg);
+      top: 21px;
+    }
+  }
 
-// End header
+  .header-nav-list {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(0, -100%);
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    @include media(">=992px") {
+      position: static;
+
+      flex-direction: row;
+      align-items: flex-end;
+      height: auto;
+      background: none;
+      transform: none;
+      transition: none;
+      justify-content: flex-end;
+      max-width: 1170px;
+      margin: auto;
+    }
+
+    li {
+      max-width: 992px;
+      height: 62px;
+      display: flex;
+
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include textFont(400, 35px, 40px, $colorWhite);
+
+        @include media(">=992px") {
+          @include textFont(400, 15px, 20px, $colorGray);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 10px;
+        }
+      }
+      a:hover {
+        color: $colorTurbo;
+      }
+    }
+
+    @include media(">=992px") {
+    }
+  }
+}
