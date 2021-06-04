@@ -34,10 +34,14 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 50px;
+    @include media(">=992px") {
+      padding-top: 50px;
+    }
     h1 {
       color: $colorWhite;
       text-transform: uppercase;
-      margin-bottom: 53px;
+      margin-bottom: 20px;
       letter-spacing: -0.2px;
       padding: 0 60px;
       text-align: center;
@@ -45,6 +49,7 @@ textarea {
 
       @include media(">=992px") {
         padding: 0px;
+        margin-bottom: 53px;
       }
     }
     h1::before {
@@ -52,7 +57,7 @@ textarea {
       content: "";
       background-size: cover;
       position: absolute;
-      bottom: 70px;
+      bottom: 60px;
       left: calc(50% - 44px);
       width: 89px;
       height: 88px;
@@ -64,11 +69,12 @@ textarea {
     strong {
       @include textFont(300, 30px, 30px, $colorTurbo);
       text-transform: uppercase;
-      margin-bottom: 60px;
+      margin-bottom: 20px;
       letter-spacing: 2px;
       text-align: center;
       padding: 0 65px;
       @include media(">=992px") {
+        margin-bottom: 60px;
         padding: 0 20px;
         @include textFont(300, 40px, 42px, $colorTurbo);
         margin-bottom: 119px;
@@ -89,7 +95,7 @@ textarea {
       letter-spacing: -0.5px;
     }
     a:after {
-      background: url(../images/sprite/sprite.svg#arrow) no-repeat;
+      background: url("../images/sprite/sprite.svg#arrow") no-repeat;
       content: "";
       background-size: cover;
       position: absolute;
@@ -269,12 +275,17 @@ textarea {
 }
 // Section
 .section-wrap {
+  max-width: 1170px;
+  margin: auto;
   .main-section {
-    max-width: 1170px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
+    margin: 0 auto 65px;
+    @include media(">=992px") {
+      margin: 0 auto 165px;
+    }
+
     h2 {
       @include textFont(400, 25px, 32px, $colorWoodsmoke);
       margin-top: 121px;
@@ -288,6 +299,7 @@ textarea {
       letter-spacing: -0.3px;
       margin-bottom: 50px;
       padding: 0 50px 0 30px;
+      text-align: center;
       @include media(">=992px") {
         margin-bottom: 130px;
         padding: 0;
@@ -296,10 +308,9 @@ textarea {
   }
 }
 .main-article-wrapper {
-  max-width: 1170px;
   display: flex;
   padding: 0 50px 0 30px;
-  margin-bottom: 165px;
+
   flex-direction: column;
   justify-content: center;
 
@@ -346,10 +357,356 @@ textarea {
     p {
       @include textFont(300, 15px, 21px, $colorGray);
       padding: 0 50px 0 30px;
+      text-align: center;
       @include media(">=992px") {
         padding: 0;
         text-align: center;
       }
     }
+  }
+}
+// Text section
+.text-section-wrapper {
+  min-height: 200px;
+  background: $colorTurbo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include media(">=992px") {
+    min-height: 600px;
+  }
+  .text-section {
+    display: flex;
+    text-align: center;
+    margin-bottom: 13px;
+    flex-direction: column;
+    em {
+      @include textFont(400, 20px, 24px, $colorWoodsmoke);
+      font-style: italic;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 1.3px;
+      padding: 0 50px;
+      @include media(">=992px") {
+        @include textFont(400, 25px, 28px, $colorWoodsmoke);
+        padding: 0;
+      }
+    }
+    p {
+      color: $colorWhite;
+      text-transform: uppercase;
+      letter-spacing: -0.25px;
+      padding: 0 50px;
+      @include media(">=992px") {
+        margin-left: 33px;
+        margin-top: 5px;
+        padding: 0;
+      }
+    }
+  }
+}
+// Portfolio
+.main-section {
+  .section-portfolio-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 992px;
+    padding: 0 65px 0 30px;
+
+    @include media(">=992px") {
+      justify-content: space-between;
+      max-width: 1170px;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0 20px;
+    }
+
+    li {
+      background: $backgroundConcrete;
+      margin-bottom: 28px;
+      min-width: 260px;
+      height: 200px;
+      text-transform: uppercase;
+      margin-left: 20px;
+      a {
+        text-decoration: none;
+        span {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          background: $backgroundTurbo;
+          width: 100%;
+          height: 100%;
+          display: none;
+          strong {
+            @include textFont(400, 20px, 28px, $colorWoodsmoke);
+            margin-bottom: 13px;
+            margin-top: 6px;
+            letter-spacing: -0.6px;
+          }
+          em {
+            color: $colorWhite;
+            letter-spacing: -0.3px;
+          }
+        }
+      }
+    }
+    li:hover a span {
+      display: block;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .main-section-more {
+    margin-bottom: 20px;
+    @include media(">=992px") {
+      margin-bottom: 161px;
+    }
+
+    a {
+      display: block;
+      color: #ffe600;
+      text-decoration: none;
+      position: relative;
+      letter-spacing: -0.35px;
+    }
+    a::before {
+      background: url("../images/arrow.png") no-repeat;
+      content: "";
+      background-size: cover;
+      position: absolute;
+      top: 32px;
+      left: calc(50% - 21px);
+      width: 42px;
+      height: 22px;
+      color: $colorWoodsmoke;
+    }
+    a:hover {
+      color: $colorWoodsmoke;
+    }
+  }
+}
+// Clients
+#clients > h2 {
+  color: $colorWhite;
+  margin-right: 12px;
+}
+#clients > h3 {
+  margin-bottom: 20px;
+  padding-right: 65px;
+}
+.section-clients-wrapper {
+  min-height: 500px;
+  background-color: $backgroundShipGray;
+}
+.clients-logo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 65px 0px 35px;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include media(">=992px") {
+    padding: 20px 51px 20px 34px;
+  }
+
+  a {
+    display: block;
+    margin: 30px;
+  }
+  img {
+    display: block;
+  }
+}
+// Contact
+.form-wrapper {
+  max-width: 970px;
+  display: flex;
+  justify-content: center;
+  .contact-section-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2px;
+  }
+}
+.section-checkbox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: $colorWoodsmoke;
+  width: 100%;
+  @include media(">=992px") {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  .checkbox-wrapper,
+  .radio-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    padding: 0 65px 0 35px;
+    @include media(">=992px") {
+      padding: 0;
+      width: 470px;
+    }
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.9px;
+      margin-right: 18px;
+    }
+    div {
+      margin-right: 38px;
+    }
+  }
+}
+.button-radio {
+  .button-checkbox-new {
+    width: 20px;
+    height: 20px;
+    background: $colorWhite;
+    position: relative;
+    border: 2px solid $colorTurbo;
+    margin-right: 4px;
+  }
+  .button-checkbox-new:after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: $backgroundTurbo;
+    top: 1px;
+    left: 1px;
+    display: none;
+  }
+}
+.custom-checkbox-input {
+  display: none;
+}
+.custom-checkbox-input:checked + label .button-checkbox-new:after {
+  display: block;
+}
+.button-radio {
+  .button-radio-new {
+    width: 19px;
+    height: 19px;
+
+    background: $colorWhite;
+    position: relative;
+    border: 2px solid $colorTurbo;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  .button-radio-new:after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: $backgroundTurbo;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    display: none;
+  }
+}
+.custom-radio-input {
+  display: none;
+}
+.custom-radio-input:checked + label .button-radio-new::after {
+  display: block;
+}
+.input-contact-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include media(">=992px") {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  div {
+    padding: 0 65px 0 35px;
+    // padding: 0 22px;
+    @include media(">=992px") {
+      width: 470px;
+      margin-right: 22px;
+      padding: 0;
+    }
+  }
+  div:last-child {
+    margin-right: 0;
+  }
+}
+.text-input {
+  width: 100%;
+  height: 50px;
+  background: $backgroundTurbo;
+  border: none;
+  margin-bottom: 20px;
+}
+.text-input:focus,
+.default-select:focus {
+  outline: none;
+  border: 1px solid $colorWoodsmoke;
+  color: $colorWoodsmoke;
+}
+.text-input::placeholder {
+  color: $colorWhite;
+}
+
+.subject-wrapper,
+.texterea-wrapper {
+  padding: 0 65px 0 35px;
+  @include media(">=992px") {
+    padding: 0;
+  }
+  textarea {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 18px;
+    background: $backgroundTurbo;
+    resize: none;
+    border: none;
+    padding: 18px 22px;
+  }
+  textarea:focus {
+    outline: none;
+    border: 1px solid $colorWoodsmoke;
+    color: $colorWoodsmoke;
+  }
+  textarea::placeholder {
+    color: $colorWhite;
+  }
+}
+.submit-wrapper {
+  padding: 0 65px 0 35px;
+  @include media(">=992px") {
+    padding: 0;
+  }
+  .submit-input {
+    width: 100%;
+    height: 50px;
+    background: $backgroundWoodsmoke;
+    border: none;
+    color: $colorTurbo;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 234px;
+    letter-spacing: -1px;
+    cursor: pointer;
+  }
+  .submit-input:hover {
+    background: $backgroundShipGray;
   }
 }
