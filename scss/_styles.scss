@@ -654,6 +654,7 @@ textarea {
   background: $backgroundTurbo;
   border: none;
   margin-bottom: 20px;
+  padding: 0 22px;
 }
 .text-input:focus,
 .default-select:focus {
@@ -694,6 +695,7 @@ textarea {
   @include media(">=992px") {
     padding: 0;
   }
+
   .submit-input {
     width: 100%;
     height: 50px;
