@@ -8,6 +8,7 @@
   clear: both;
   display: block;
 }
+
 body {
   @include textFont(400, 15px, 18px, $colorGray);
 }
@@ -157,6 +158,84 @@ textarea {
   }
 }
 .header-nav {
+  // position: relative;
+  .header-nav-list {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(0, -100%);
+    // visibility: hidden;
+
+    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    @include media(">=992px") {
+      position: static;
+      flex-direction: row;
+      align-items: flex-end;
+      height: auto;
+      background: none;
+      transform: none;
+      transition: none;
+      justify-content: flex-end;
+      max-width: 1170px;
+      margin: auto;
+    }
+
+    li {
+      max-width: 992px;
+      height: 62px;
+      display: flex;
+      margin: 12px 23px;
+
+      position: relative;
+      letter-spacing: 0.1px;
+
+      a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        @include textFont(400, 35px, 40px, $colorWhite);
+        @include media(">=992px") {
+          @include textFont(400, 15px, 20px, $colorGray);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      a:hover {
+        color: $colorTurbo;
+      }
+
+      a::before {
+        content: "";
+        position: absolute;
+        height: 40px;
+        width: calc(100% + 40px);
+        top: 11px;
+        left: -20px;
+        border: 1px solid #ffe600;
+        display: none;
+      }
+    }
+    li:hover > a::before {
+      display: inline-block;
+    }
+
+    @include media(">=992px") {
+    }
+  }
+
   .burger {
     width: 50px;
     height: 46px;
@@ -166,8 +245,9 @@ textarea {
     z-index: 10;
     top: 30px;
     right: 10px;
+    cursor: pointer;
     span {
-      // display: block;
+      display: block;
       position: absolute;
       left: 5px;
       height: 4px;
@@ -196,6 +276,7 @@ textarea {
   }
   input[type="checkbox"]:checked ~ .header-nav-list {
     transform: none;
+    // visibility: visible;
   }
   input[type="checkbox"]:checked + .burger {
     span:first-child {
@@ -213,66 +294,8 @@ textarea {
       top: 21px;
     }
   }
-
-  .header-nav-list {
-    text-transform: uppercase;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-
-    z-index: 9;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.9);
-    transform: translate(0, -100%);
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    @include media(">=992px") {
-      position: static;
-
-      flex-direction: row;
-      align-items: flex-end;
-      height: auto;
-      background: none;
-      transform: none;
-      transition: none;
-      justify-content: flex-end;
-      max-width: 1170px;
-      margin: auto;
-    }
-
-    li {
-      max-width: 992px;
-      height: 62px;
-      display: flex;
-
-      a {
-        display: block;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        @include textFont(400, 35px, 40px, $colorWhite);
-
-        @include media(">=992px") {
-          @include textFont(400, 15px, 20px, $colorGray);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0 10px;
-        }
-      }
-      a:hover {
-        color: $colorTurbo;
-      }
-    }
-
-    @include media(">=992px") {
-    }
-  }
 }
+
 // Section
 .section-wrap {
   max-width: 1170px;
@@ -508,11 +531,13 @@ textarea {
 .clients-logo {
   display: flex;
   width: 100%;
+
   justify-content: space-between;
   align-items: center;
-  padding: 0px 65px 0px 35px;
+
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0px 65px 0px 35px;
   @include media(">=992px") {
     padding: 20px 51px 20px 34px;
   }
@@ -563,7 +588,10 @@ textarea {
       display: flex;
       align-items: center;
       letter-spacing: -0.9px;
-      margin-right: 18px;
+
+      @include media(">=992px") {
+        margin-right: 18px;
+      }
     }
     div {
       margin-right: 38px;
@@ -637,7 +665,6 @@ textarea {
 
   div {
     padding: 0 65px 0 35px;
-    // padding: 0 22px;
     @include media(">=992px") {
       width: 470px;
       margin-right: 22px;
